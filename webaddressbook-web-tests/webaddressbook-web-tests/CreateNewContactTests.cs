@@ -47,8 +47,6 @@ namespace WebAddressbookTests
             OpenHomePage();
             Login(new AccountData("admin", "secret"));
             CreateNewContact(new ContactData ("firstName","LastName"));
-            HomePage();
-            DeleteLastContact();
             LogOut();
         }
 
