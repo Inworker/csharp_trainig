@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace WebAddressbookTests
@@ -11,16 +12,26 @@ namespace WebAddressbookTests
         [Test]
         public void GroupCreationTest()
         {
-            app.Nav.OpenHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
+            GroupData group = new GroupData("aaa");
+            group.Header = "dddd";
+            group.Footer = "sss";
+
             app.Nav.GoToGroupPage();
-            app.Group.CreationNewGroup();
-            app.Group.FillGropForm(new GroupData ("aaa", "ddd", "qwfqw"));
-            app.Group.ClickButtonSubmit();
-            app.Group.ClickButtonGroup();
+            app.Group.CreateGroup(group);
+            app.Nav.ClickButtonLogout();
+        }
+        
+        [Test]
+        public void EmptyGroupCreationTest2()
+        {
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+
+            app.Nav.GoToGroupPage();
+            app.Group.CreateGroup(group);
             app.Nav.ClickButtonLogout();
         }
 
-              
-}
+    }
 }

@@ -15,22 +15,29 @@ namespace WebAddressbookTests
     public class NavigationHelper : HelperBase
     {
         private string baseURL;
+        private ApplicationManager manager;
 
-        public NavigationHelper(IWebDriver driver, string baseURL) : base(driver)
+        public NavigationHelper(ApplicationManager manager, string baseURL) : base(manager)
         {
             this.baseURL = baseURL;
+            this.manager = manager; 
+
         }
-        public void OpenHomePage()
+        public NavigationHelper OpenHomePage()
         {
             driver.Navigate().GoToUrl(baseURL);
+            return this;
         }
-        public void GoToGroupPage()
+        public NavigationHelper GoToGroupPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
+            return this;
         }
-        public void ClickButtonLogout()
+        public NavigationHelper ClickButtonLogout()
         {
             driver.FindElement(By.LinkText("Logout")).Click();
+            return this;
+                
         }
 
     }

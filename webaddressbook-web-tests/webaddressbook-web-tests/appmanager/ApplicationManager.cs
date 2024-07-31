@@ -18,7 +18,7 @@ namespace WebAddressbookTests
         private bool acceptNextAlert = true;
 
         protected LoginHelper loginHelper;
-        protected NavigationHelper nav;
+        protected NavigationHelper navHelper;
         protected GroupHelper groupHelper;
         protected ContactHelper contactHelper;
         public ApplicationManager()
@@ -26,20 +26,27 @@ namespace WebAddressbookTests
             driver = new FirefoxDriver();
             baseURL = "http://localhost";
             
-            loginHelper = new LoginHelper(driver);
-            nav = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
+            loginHelper = new LoginHelper(this);
+            navHelper = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
 
         }
         public LoginHelper Auth
         {  get { return loginHelper; } }
 
         public NavigationHelper Nav
-        {  get { return nav; } }
+        {  get { return navHelper; } }
 
         public GroupHelper Group { get { return groupHelper; } }
         public ContactHelper Contact { get {return contactHelper;} }
+
+        public IWebDriver Driver 
+        { 
+            get { return driver; }
+
+        }
+
 
         public void Stop()
         {
