@@ -30,7 +30,7 @@ namespace WebAddressbookTests
         }
         public NavigationHelper GoToGroupPage()
         {
-            driver.FindElement(By.LinkText("group page")).Click();
+            driver.FindElement(By.LinkText("groups")).Click();
             return this;
         }
         public NavigationHelper ClickButtonLogout()
