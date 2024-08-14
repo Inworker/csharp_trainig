@@ -17,6 +17,10 @@ namespace WebAddressbookTests
         {
 
         }
+     
+
+
+
 
         public GroupHelper DeleteGroup()
         {
@@ -81,6 +85,20 @@ namespace WebAddressbookTests
 
         }
 
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
 
+            return this;
+
+        }
+
+        public GroupHelper SubmitGroupModification()
+
+        {
+            driver.FindElement(By.Name("update")).Click();
+
+            return this;
+        }
     }
 }
